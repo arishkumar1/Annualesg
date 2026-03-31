@@ -1,0 +1,395 @@
+
+.main-show {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.main-show > section:last-child {
+  flex: 2;
+}
+
+.text-show {
+  padding: 30px 40px 30px 40px !important;
+  width: fit-content;
+}
+
+.main-show > section > p:first-child {
+  font-size: 55px !important;
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.main-show > section > p:nth-child(2) {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  opacity: 1;
+  color: rgb(75 85 99);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.text-show > button:first-of-type {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 20px 30px 20px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.text-show > button:nth-of-type(2) {
+  background-color: white;
+  color: grey;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 50px;
+  margin-left: 30px;
+  border: 1.5px solid #ddd;
+  cursor: pointer;
+}
+
+/* ══════════════════════════════════════
+   CARD-SHOW WRAPPER
+══════════════════════════════════════ */
+.card-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* ══════════════════════════════════════
+   STAGE
+══════════════════════════════════════ */
+.rm-stage {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.32s ease;
+}
+
+.rm-animating {
+  opacity: 0.55;
+}
+
+/* ══════════════════════════════════════
+   CARD BASE
+══════════════════════════════════════ */
+.rm-card {
+  position: absolute;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease, opacity 0.4s ease;
+}
+
+.rm-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* Full-cover image inside card */
+.rm-card-img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  object-fit: contain;
+  display: block;
+  border-radius: inherit;
+  /* transition: transform 0.6s ease; */
+}
+
+/* .rm-card:hover .rm-card-img {
+  transform: scale(1.04);
+} */
+
+/* ── CENTER MAIN CARD ── */
+.rm-card-main {
+  width: 280px;
+  height: 400px;
+  z-index: 3;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.08),
+    0 20px 40px rgba(0, 0, 0, 0.14), 0 40px 80px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  animation: rm-float 5s ease-in-out infinite;
+}
+
+@keyframes rm-float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* ── LEFT CARD ── */
+.rm-card-left {
+  width: 160px;
+  height: 250px;
+  z-index: 2;
+  left: 0px;
+  top: 50%;
+  margin-top: -125px;
+  transform: rotate(-7deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06), 0 12px 24px rgba(0, 0, 0, 0.12),
+    0 24px 48px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  cursor: pointer;
+  opacity: 0.85;
+  animation: rm-float-left 5.5s ease-in-out infinite 0.7s;
+}
+
+@keyframes rm-float-left {
+  0% {
+    transform: rotate(-7deg) translate(0px, 0px);
+  }
+  25% {
+    transform: rotate(-7deg) translate(-3px, -5px);
+  }
+  50% {
+    transform: rotate(-7deg) translate(2px, -8px);
+  }
+  75% {
+    transform: rotate(-7deg) translate(-2px, -4px);
+  }
+  100% {
+    transform: rotate(-7deg) translate(0px, 0px);
+  }
+}
+
+.rm-card-left:hover {
+  opacity: 1;
+}
+
+/* ── RIGHT CARD ── */
+.rm-card-right {
+  width: 145px;
+  height: 220px;
+  z-index: 2;
+  right: 0px;
+  top: 50%;
+  margin-top: -110px;
+  transform: rotate(4deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06), 0 12px 24px rgba(0, 0, 0, 0.12),
+    0 24px 48px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  cursor: pointer;
+  opacity: 0.82;
+  animation: rm-float-right 4.8s ease-in-out infinite 1.2s;
+}
+
+@keyframes rm-float-right {
+  0% {
+    transform: rotate(4deg) translate(0px, 0px);
+  }
+  25% {
+    transform: rotate(4deg) translate(3px, -5px);
+  }
+  50% {
+    transform: rotate(4deg) translate(-2px, -8px);
+  }
+  75% {
+    transform: rotate(4deg) translate(2px, -3px);
+  }
+  100% {
+    transform: rotate(4deg) translate(0px, 0px);
+  }
+}
+
+.rm-card-right:hover {
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════
+   DOTS
+══════════════════════════════════════ */
+.rm-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.rm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(31, 41, 55, 0.18);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s, width 0.3s, border-radius 0.3s;
+}
+
+.rm-dot-active {
+  background: rgb(31, 41, 55);
+  width: 26px;
+  border-radius: 4px;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 1000px) {
+  .main-show {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .text-show {
+    width: 100%;
+    text-align: center;
+    padding: 20px !important;
+  }
+
+  .text-show > button:nth-of-type(2) {
+    margin-left: 12px;
+  }
+
+  .card-show {
+    width: 100%;
+  }
+
+  .rm-stage {
+    max-width: 520px;
+    height: 380px;
+  }
+
+  .rm-card-main {
+    width: 230px;
+    height: 330px;
+  }
+  .rm-card-left {
+    width: 130px;
+    height: 205px;
+  }
+  .rm-card-right {
+    width: 118px;
+    height: 185px;
+  }
+
+  .btn {
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-show > section > p:first-child {
+    font-size: 36px !important;
+  }
+
+  .rm-stage {
+    max-width: 340px;
+    height: 320px;
+  }
+
+  .rm-card-main {
+    width: 190px;
+    height: 280px;
+  }
+  .rm-card-left {
+    width: 108px;
+    height: 170px;
+  }
+  .rm-card-right {
+    width: 98px;
+    height: 155px;
+  }
+
+  .rm-main-type {
+    font-size: 1.2rem;
+  }
+  .rm-main-title {
+    font-size: 1rem;
+  }
+
+  /* .btn {
+    margin-bottom: 10px !important;
+  } */
+}
+
+/* Side cards — fully isolated from repaints */
+.rm-card-static {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+.rm-card-static .rm-card-inner,
+.rm-card-static .rm-card-img {
+  will-change: auto;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════
+   PROFESSIONAL CROSSFADE
+   Layers stack absolutely — entering fades
+   in with a gentle scale while leaving fades out.
+   cubic-bezier(0.4, 0, 0.2, 1) = Material ease-in-out
+══════════════════════════════════════ */
+.rm-cf-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.rm-cf-layer {
+  position: absolute !important;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-fit: contain;
+  border-radius: inherit;
+  will-change: opacity, transform;
+  will-change: opacity;
+}
+
+/* Fully visible — resting state */
+.rm-cf-visible {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+  transition: opacity 900ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 900ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Entering — starts invisible & very slightly zoomed out,
+   transitions to visible when class becomes rm-cf-visible */
+.rm-cf-entering {
+  opacity: 0;
+  transform: scale(1.04);
+  z-index: 2;
+  transition: opacity 900ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 900ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Leaving — fades out & gently zooms in slightly */
+.rm-cf-leaving {
+  opacity: 0;
+  transform: scale(0.97);
+  z-index: 1;
+  transition: opacity 900ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 900ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}

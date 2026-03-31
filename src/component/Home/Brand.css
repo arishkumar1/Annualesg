@@ -1,0 +1,42 @@
+.brand {
+  background-color: rgb(17 24 41);
+}
+
+
+.brand-text {
+  text-align: center;
+  color: white;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.brand-text > p:first-child {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.brand-text > p:nth-child(2) {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  padding-top: 20px;
+}
+
+.brand-img {
+  text-align: center;
+}
+
+.brand-img img {
+  width: 150px;
+  height: auto;
+  padding: 10px;
+  mix-blend-mode: screen;
+}
+
+.brand-bottom {
+  color: white;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  text-align: center;
+  padding-top: 50px;
+    padding-top: 50px;
+}

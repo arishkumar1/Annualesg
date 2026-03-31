@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap");
+
+:root {
+  --bg: #f1f3f5;
+  --dark: #1e293b;
+  --muted: #4b5563;
+  --accent: #111829;
+  --divider: rgba(30, 41, 59, 0.08);
+}
+
+/* ══════════════════════════════════════
+   PAGE WRAPPER
+══════════════════════════════════════ */
+.services-wrapper {
+  background: var(--bg);
+  width: 100%;
+}
+
+/* ══════════════════════════════════════
+   HEADER
+══════════════════════════════════════ */
+.full {
+  text-align: center;
+  padding: 72px 40px 52px;
+  background: var(--bg);
+}
+
+.full p:first-child {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.15;
+  margin: 0 0 18px;
+}
+
+.full p:nth-child(2) {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ══════════════════════════════════════
+   GRID
+══════════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════
+   CELL BASE
+══════════════════════════════════════ */
+.cell {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 320px;
+  padding: 32px 56px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--divider);
+}
+
+/* ══════════════════════════════════════
+   IMAGE CELL
+══════════════════════════════════════ */
+.cell-img {
+  align-items: center;
+  justify-content: center;
+  padding: 24px 40px;
+}
+
+.cell-img img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  /* Transparent bg — numbers show through */
+  mix-blend-mode: multiply;
+  /* Same shadow style as screenshot — soft, wide, no hard edge */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.04))
+    drop-shadow(0 12px 28px rgba(0, 0, 0, 0.09))
+    drop-shadow(0 32px 56px rgba(0, 0, 0, 0.07));
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+}
+
+.cell-img:hover img {
+  transform: translateY(-6px) scale(1.03);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.06))
+    drop-shadow(0 18px 40px rgba(0, 0, 0, 0.12))
+    drop-shadow(0 40px 72px rgba(0, 0, 0, 0.09));
+}
+
+/* ══════════════════════════════════════
+   TEXT CELL
+══════════════════════════════════════ */
+.cell-text {
+  gap: 0;
+}
+
+.cell-text p:first-child {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.15;
+  margin: 0 0 20px;
+}
+
+.cell-text p:nth-child(2) {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.82;
+  color: var(--muted);
+  margin: 0 0 28px;
+  max-width: 460px;
+}
+
+.cell-text button {
+  width: fit-content;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background-color: var(--accent);
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.cell-text button:hover {
+  background: #2d6a4f;
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE ≤ 900px
+   Mobile order: img → text, img → text …
+   Each pair gets explicit order so image
+   always appears ABOVE its text partner
+══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .full {
+    padding: 48px 24px 36px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cell {
+    min-height: auto;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .cell-img {
+    padding: 16px 20px 6px;
+    align-items: center;
+  }
+
+  .cell-img img {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .cell-text {
+    padding: 8px 20px 24px;
+  }
+
+  .cell-text p:nth-child(2) {
+    max-width: 100%;
+  }
+
+  /* ── Explicit order per pair ──
+     imgLeft=true  → img already before text in DOM → keep
+     imgLeft=false → text before img in DOM → swap   */
+
+  /* Pair 1 (imgLeft=true):  DOM order img,text → correct */
+  .cell:nth-child(1) {
+    order: 1;
+  }
+  .cell:nth-child(2) {
+    order: 2;
+  }
+
+  /* Pair 2 (imgLeft=false): DOM order text,img → swap */
+  .cell:nth-child(3) {
+    order: 4;
+  }
+  .cell:nth-child(4) {
+    order: 3;
+  }
+
+  /* Pair 3 (imgLeft=true):  correct */
+  .cell:nth-child(5) {
+    order: 5;
+  }
+  .cell:nth-child(6) {
+    order: 6;
+  }
+
+  /* Pair 4 (imgLeft=false): swap */
+  .cell:nth-child(7) {
+    order: 8;
+  }
+  .cell:nth-child(8) {
+    order: 7;
+  }
+
+  /* Pair 5 (imgLeft=true):  correct */
+  .cell:nth-child(9) {
+    order: 9;
+  }
+  .cell:nth-child(10) {
+    order: 10;
+  }
+
+  /* Pair 6 (imgLeft=false): swap */
+  .cell:nth-child(11) {
+    order: 12;
+  }
+  .cell:nth-child(12) {
+    order: 11;
+  }
+}
+
+@media (max-width: 480px) {
+  .cell-text p:first-child {
+    font-size: 1.6rem;
+  }
+
+  .cell-img img {
+    max-width: 200px;
+  }
+}

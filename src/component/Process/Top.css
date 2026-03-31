@@ -1,0 +1,19 @@
+.main-top {
+  padding-top: 80px;
+  text-align: center;
+  background-color: rgb(243 244 246 );
+}
+
+.main-top h1 {
+  font-size: 3rem;
+  line-height: 1;
+  padding-bottom: 30px;
+}
+
+.main-top p {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+  color: rgb(75 85 99);
+  padding-bottom: 30px;
+}
+

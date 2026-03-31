@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@300;400;500&display=swap");
+
+:root {
+  --bg: rgb(243 244 246);
+  --card-bg: #ffffff;
+  --dark: rgb(31 41 55);
+  --accent: #4f7c6f;
+  --num-color: rgba(31, 41, 55, 0.12);
+  --radius: 20px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+/* ══════════════════════════════════════
+   GRID WRAPPER
+══════════════════════════════════════ */
+.main-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 480px));
+  justify-content: center;
+  gap: 32px 48px;
+  padding: 48px 40px;
+  background-color: var(--bg);
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════
+   SPACER CELLS (empty sections)
+══════════════════════════════════════ */
+.spacer {
+  /* visible on desktop to push cards into zig-zag layout */
+  display: block;
+}
+
+/* ══════════════════════════════════════
+   CARD BASE
+══════════════════════════════════════ */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 28px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.11);
+}
+
+/* ══════════════════════════════════════
+   CARD HEADER
+══════════════════════════════════════ */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Left-aligned variant: number first */
+.card-header.reverse {
+  flex-direction: row-reverse;
+}
+
+.card-header h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.card-num {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--dark);
+  opacity: 0.18;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+}
+
+/* ══════════════════════════════════════
+   CARD BODY
+══════════════════════════════════════ */
+.card-body p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(31, 41, 55, 0.72);
+}
+
+/* ══════════════════════════════════════
+   ACCENT LINE
+══════════════════════════════════════ */
+.card::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — single column on mobile
+══════════════════════════════════════ */
+@media (max-width: 700px) {
+  .main-card {
+    grid-template-columns: 1fr;
+    padding: 28px 18px;
+    gap: 20px;
+  }
+
+  /* Hide empty spacer cells — they only make sense in 2-col layout */
+  .spacer {
+    display: none;
+  }
+
+  /* All cards full-width, header always left-to-right */
+  .card-header.reverse {
+    flex-direction: row;
+  }
+}
